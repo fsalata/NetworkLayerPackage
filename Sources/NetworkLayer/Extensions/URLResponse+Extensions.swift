@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ValidationStatus {
+public enum ValidationStatus {
     case informational      // 100
     case success            // 200
     case redirection        // 300
@@ -16,7 +16,7 @@ enum ValidationStatus {
     case unknown
 }
 
-extension URLResponse {
+public extension URLResponse {
     var validationStatus: ValidationStatus {
         if let httpResponse = self as? HTTPURLResponse {
             let statusCode = httpResponse.statusCode

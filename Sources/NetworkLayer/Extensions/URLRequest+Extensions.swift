@@ -5,7 +5,7 @@
 
 import Foundation
 
-extension URLRequest {
+public extension URLRequest {
     init(baseURL: String, target: ServiceTargetProtocol) throws {
         let parameters = target.parameters
 

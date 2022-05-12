@@ -5,7 +5,7 @@
 
 import Foundation
 
-class APIClient {
+public class APIClient {
     private var session: URLSessionProtocol
     private(set) var api: APIProtocol
 
