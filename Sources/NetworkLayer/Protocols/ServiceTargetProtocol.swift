@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol ServiceTargetProtocol {
+public protocol ServiceTargetProtocol {
     var path: String { get }
     var method: RequestMethod { get }
     var header: [String: String]? { get }

@@ -5,11 +5,11 @@
 
 import Foundation
 
-class APIClient {
+public class APIClient {
     private var session: URLSessionProtocol
     private(set) var api: APIProtocol
 
-    init(session: URLSessionProtocol = URLSession.shared,
+    public init(session: URLSessionProtocol = URLSession.shared,
          api: APIProtocol) {
         self.session = session
         self.api = api
@@ -20,7 +20,7 @@ class APIClient {
     ///   - target: ServiceTargetProtocol
     ///   - completion: (Result<T, APIError>, URLResponse?) -> Void
     @discardableResult
-    func request<T: Decodable>(target: ServiceTargetProtocol,
+    public func request<T: Decodable>(target: ServiceTargetProtocol,
                                completion: @escaping (Result<T, APIError>, URLResponse?) -> Void) -> URLSessionDataTask? {
         guard var urlRequest = try? URLRequest(baseURL: api.baseURL, target: target) else {
             completion(.failure(.network(.badURL)), nil)

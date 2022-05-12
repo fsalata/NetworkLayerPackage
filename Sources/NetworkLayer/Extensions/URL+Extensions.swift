@@ -5,9 +5,9 @@
 
 import Foundation
 
-typealias JSON = [String: Any]
+public typealias JSON = [String: Any]
 
-extension URL {
+public extension URL {
     init?(baseUrl: String, path: String, parameters: JSON?, method: RequestMethod) {
         var components = URLComponents(string: baseUrl)!
         components.path += path

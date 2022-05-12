@@ -5,6 +5,6 @@
 
 import Foundation
 
-protocol APIProtocol {
+public protocol APIProtocol {
     var baseURL: String { get }
 }

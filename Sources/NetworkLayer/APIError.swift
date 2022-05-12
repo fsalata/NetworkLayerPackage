@@ -5,13 +5,13 @@
 
 import Foundation
 
-enum APIError: Error, Equatable {
+public enum APIError: Error, Equatable {
     case service(Service)
     case network(Network)
     case parse(Parse)
     case unknown
 
-    enum Service: Error, Equatable {
+    public enum Service: Error, Equatable {
         case badRequest
         case unauthorized
         case forbidden
@@ -23,7 +23,7 @@ enum APIError: Error, Equatable {
         case unknown(String)
     }
 
-    enum Network: Error, Equatable {
+    public enum Network: Error, Equatable {
         case cancelled
         case networkConnectionLost
         case badURL
@@ -32,7 +32,7 @@ enum APIError: Error, Equatable {
         case unknown(String)
     }
 
-    enum Parse: Error, Equatable {
+    public enum Parse: Error, Equatable {
         case typeMismatch(debugDescription: String)
         case valueNotFound(debugDescription: String)
         case keyNotFound(debugDescription: String)
@@ -41,7 +41,7 @@ enum APIError: Error, Equatable {
     }
 }
 
-extension APIError {
+public extension APIError {
     init(_ error: HTTPURLResponse) {
         self = .service(Service(error))
     }
@@ -68,7 +68,7 @@ extension APIError {
     }
 }
 
-extension APIError.Service {
+public extension APIError.Service {
     init(_ httpURLResponse: HTTPURLResponse) {
         switch httpURLResponse.statusCode {
         case 400: self = .badRequest
@@ -83,7 +83,7 @@ extension APIError.Service {
     }
 }
 
-extension APIError.Network {
+public extension APIError.Network {
     init(_ urlError: URLError) {
         switch urlError.code {
         case .cancelled: self = .cancelled
@@ -96,7 +96,7 @@ extension APIError.Network {
     }
 }
 
-extension APIError.Parse {
+public extension APIError.Parse {
     init(_ decodingError: DecodingError) {
         switch decodingError {
         case let .typeMismatch( _, context): self = .typeMismatch(debugDescription: context.debugDescription)
